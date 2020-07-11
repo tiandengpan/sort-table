@@ -2,19 +2,10 @@ import React, { useState, Fragment } from "react";
 import { Table, Button } from "antd";
 import SortOrderIndicator from "./SortOrderIndicator";
 import sortByColumnIndex from "../helper/Utils";
-import { SortableContainer, SortableElement } from "react-sortable-hoc";
+import DragSorter from "./DragSorter";
+
 
 const sortStander = "title";
-const SortableItem = SortableElement(({value}) => <li>{value}</li>);
-const SortableList = SortableContainer(({items}) => {
-  return (
-    <ul>
-      {items.map((value, index) => (
-        <SortableItem key={value[sortStander]} index={index} value={value[sortStander]} />
-      ))}
-    </ul>
-  );
-});
 
 export default ({ columns, dataSource, ...resProps }) => {
   const [sortedColumns, setSortedColumns] = useState(columns);
@@ -40,7 +31,7 @@ export default ({ columns, dataSource, ...resProps }) => {
       <Button onClick={reSort} type="primary">
         <SortOrderIndicator sortOrder={sortOrder} />
       </Button>
-      <SortableList items={sortedColumns} onSortEnd={onSortEnd}/>
+      <DragSorter data={sortedColumns} onSortEnd={onSortEnd} sortStander={sortStander}/>
       <Table columns={sortedColumns} dataSource={dataSource} {...resProps} />
     </Fragment>
   );
