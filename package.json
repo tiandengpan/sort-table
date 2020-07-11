@@ -1,0 +1,39 @@
+{
+  "name": "sort-table",
+  "version": "0.0.0",
+  "private": true,
+  "main": "main.js",
+  "homepage": ".",
+  "dependencies": {
+    "antd": "^4.4.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-sortable-hoc": "^1.11.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "start:app": "cross-env NODE_ENV=development && electron .",
+    "package": "cross-env NODE_ENV=production electron-packager ./ sortTable --all --out ~/ --electron-version 9.1.0 --overwrite"
+  },
+  "devDependencies": {
+    "electron-packager": "^15.0.0",
+    "react-scripts": "latest",
+    "electron": "^9.1.0",
+    "cross-env": "^7.0.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
